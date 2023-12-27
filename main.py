@@ -1,5 +1,18 @@
 import tkinter
+from tkinter import filedialog
 from PIL import Image, ImageDraw, ImageFont
+
+
+# Open file explorer window
+def browse():
+    filename = filedialog.askopenfilename(initialdir="/",
+                                          title="Select a File",
+                                          filetypes=(("jpeg", "*.jpeg"),
+                                                     ("jpg", "*.jpg"),
+                                                     ("png", "*.png"))
+                                          )
+    label_open_file_location.configure(text=filename)
+
 
 # Define
 color_bg = "#F5F7F8"
@@ -24,7 +37,7 @@ label_watermark = tkinter.Label(text="Watermark text:", font=("Arial", 12), pady
 input_watermark = tkinter.Entry(font=("Arial", 12), width=20, bg=color_tint1, fg=color_tint2)
 
 # Buttons
-button_search_file = tkinter.Button(text="Browse", font=("Arial", 12), width=17, bg=color_tint1, command='')
+button_search_file = tkinter.Button(text="Browse", font=("Arial", 12), width=17, bg=color_tint1, command=browse)
 button_replace = tkinter.Button(text="Place watermark", font=("Arial", 12), width=17, bg=color_tint1, command='')
 button_exit = tkinter.Button(text="Exit", font=("Arial", 12), width=17, bg=color_tint2, fg=color_bg, command=exit)
 
